@@ -104,8 +104,8 @@ func Contains[T any](list []T, fn func(T) bool) bool {
 	return slices.ContainsFunc(list, fn)
 }
 
-// ContainsT returns true if any of the elements are present in the list.
-func ContainsT[T comparable](list []T, elms ...T) bool {
+// ContainsAny returns true if any of the elements are present in the list.
+func ContainsAny[T comparable](list []T, elms ...T) bool {
 	if len(list) == 0 || len(elms) == 0 {
 		return false
 	}
@@ -119,6 +119,12 @@ func ContainsT[T comparable](list []T, elms ...T) bool {
 		}
 	}
 	return false
+}
+
+// ContainsT returns true if any of the elements are present in the list.
+// Deprecated: use ContainsAny
+func ContainsT[T comparable](list []T, elms ...T) bool {
+	return ContainsAny(list, elms...)
 }
 
 // First returns the first element satisfying the predicate.
