@@ -207,25 +207,25 @@ func TestContains(t *testing.T) {
 	})
 }
 
-func TestContainsT(t *testing.T) {
+func TestContainsAny(t *testing.T) {
 	t.Run("empty list", func(t *testing.T) {
-		require.False(t, slicex.ContainsT([]int{}, 1))
+		require.False(t, slicex.ContainsAny([]int{}, 1))
 	})
 
 	t.Run("nil list", func(t *testing.T) {
-		require.False(t, slicex.ContainsT(nil, 1))
+		require.False(t, slicex.ContainsAny(nil, 1))
 	})
 
 	t.Run("empty elms", func(t *testing.T) {
-		require.False(t, slicex.ContainsT([]int{1}))
+		require.False(t, slicex.ContainsAny([]int{1}))
 	})
 
 	t.Run("no matches", func(t *testing.T) {
-		require.False(t, slicex.ContainsT([]int{1, 3, 4}, 2, 5))
+		require.False(t, slicex.ContainsAny([]int{1, 3, 4}, 2, 5))
 	})
 
 	t.Run("matches", func(t *testing.T) {
-		require.True(t, slicex.ContainsT([]int{1, 3, 4, 2}, 2, 3))
+		require.True(t, slicex.ContainsAny([]int{1, 3, 4, 2}, 2, 3))
 	})
 }
 
