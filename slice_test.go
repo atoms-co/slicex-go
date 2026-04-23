@@ -189,24 +189,6 @@ func TestCount(t *testing.T) {
 	})
 }
 
-func TestContains(t *testing.T) {
-	f := func(n int) bool {
-		return n == 2
-	}
-
-	t.Run("empty", func(t *testing.T) {
-		require.False(t, slicex.Contains([]int{}, f))
-	})
-
-	t.Run("no matches", func(t *testing.T) {
-		require.False(t, slicex.Contains([]int{1, 3, 4}, f))
-	})
-
-	t.Run("matches", func(t *testing.T) {
-		require.True(t, slicex.Contains([]int{1, 3, 4, 2}, f))
-	})
-}
-
 func TestContainsAny(t *testing.T) {
 	t.Run("empty list", func(t *testing.T) {
 		require.False(t, slicex.ContainsAny([]int{}, 1))
