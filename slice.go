@@ -98,12 +98,6 @@ func Count[T any](list []T, fn func(T) bool) int {
 	return ret
 }
 
-// Contains returns true if at least one element satisfying the predicate is found.
-// Deprecated: use slices.ContainsFunc
-func Contains[T any](list []T, fn func(T) bool) bool {
-	return slices.ContainsFunc(list, fn)
-}
-
 // ContainsAny returns true if any of the elements are present in the list.
 func ContainsAny[T comparable](list []T, elms ...T) bool {
 	if len(list) == 0 || len(elms) == 0 {
@@ -119,12 +113,6 @@ func ContainsAny[T comparable](list []T, elms ...T) bool {
 		}
 	}
 	return false
-}
-
-// ContainsT returns true if any of the elements are present in the list.
-// Deprecated: use ContainsAny
-func ContainsT[T comparable](list []T, elms ...T) bool {
-	return ContainsAny(list, elms...)
 }
 
 // First returns the first element satisfying the predicate.
