@@ -288,3 +288,17 @@ func TestGroupBy(t *testing.T) {
 		require.Equal(t, groups, map[string][]int{"odd": {1, 3, 5}, "even": {2, 4}})
 	})
 }
+
+func TestUnique(t *testing.T) {
+	t.Run("empty", func(t *testing.T) {
+		require.Nil(t, slicex.Unique([]int{}))
+	})
+
+	t.Run("nil", func(t *testing.T) {
+		require.Nil(t, slicex.Unique[int](nil))
+	})
+
+	t.Run("remove duplicates", func(t *testing.T) {
+		require.Equal(t, slicex.Unique([]int{1, 3, 5, 3, 5, 7}), []int{1, 3, 5, 7})
+	})
+}

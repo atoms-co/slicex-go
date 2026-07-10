@@ -154,3 +154,15 @@ func GroupBy[T any, K comparable](list []T, fn func(T) K) map[K][]T {
 	}
 	return m
 }
+
+// Unique removes duplicate values while preserving order.
+func Unique[T comparable](list []T) []T {
+	seen := map[T]bool{}
+	return Filter(list, func(v T) bool {
+		if seen[v] {
+			return false
+		}
+		seen[v] = true
+		return true
+	})
+}
